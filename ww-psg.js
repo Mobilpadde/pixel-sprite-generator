@@ -342,7 +342,7 @@ Sprite.prototype.returnPixelData = function() {
                 index = (v * ulen + u) * 4;
             }
 
-            var rgb = { r: 1, g: 1, b: 1 };
+            var rgb = { r: 1, g: 1, b: 1, a: 1 };
 
             if (val !== 0) {
                 if (this.options.colored) {
