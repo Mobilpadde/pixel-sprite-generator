@@ -1,6 +1,6 @@
 {
   "name": "ww-psg",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A procedural pixel sprite generator for web workers",
   "main": "ww-psg.js",
   "directories": {
