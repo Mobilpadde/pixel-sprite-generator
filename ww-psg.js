@@ -307,7 +307,7 @@ Sprite.prototype.generateEdges = function() {
 *   @method renderPixelData
 *   @returns {undefined}
 */
-Sprite.prototype.renderPixelData = function() {
+Sprite.prototype.returnPixelData = function() {
     var isVerticalGradient = Math.random() > 0.5;
     var saturation         = Math.max(Math.min(Math.random() * this.options.saturation, 1), 0);
     var hue                = Math.random();
