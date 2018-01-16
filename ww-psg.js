@@ -448,11 +448,11 @@ Sprite.prototype.toString = function() {
 };
 
 // Pixel Sprite Generator module
-var psg = {
+var ww-psg = {
     version: `v${v}`,
     Sprite: Sprite,
     Mask: Mask
 };
 
-// Export psg module
-module.exports = psg;
+// Export ww-psg module
+module.exports = ww-psg;
