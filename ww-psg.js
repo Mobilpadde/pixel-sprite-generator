@@ -1,3 +1,4 @@
+const seed = require('seed-random');
 const v = require('./package.json');
 
 /**
@@ -75,7 +76,8 @@ function Sprite(mask, pixels, options) {
         edgeBrightness  : 0.3,
         colorVariations : 0.2,
         brightnessNoise : 0.3,
-        saturation      : 0.5
+        saturation      : 0.5,
+        seed            : null,
     };
 
     // Set default options
@@ -93,6 +95,8 @@ function Sprite(mask, pixels, options) {
             this.options[prop] = val;
         }
     }
+
+    this.rng = seed(options.seed);
 
     this.init();
 }
@@ -252,9 +256,9 @@ Sprite.prototype.generateRandomSample = function() {
             var val = this.getData(x, y);
 
             if (val === 1) {
-                val = val * Math.round(Math.random());
+                val = val * Math.round(this.rng());
             } else if (val === 2) {
-                if (Math.random() > 0.5) {
+                if (this.rng() > 0.5) {
                     val = 1;
                 } else {
                     val = -1;
@@ -308,8 +312,8 @@ Sprite.prototype.generateEdges = function() {
 *   @returns {undefined}
 */
 Sprite.prototype.returnPixelData = function() {
-    var isVerticalGradient = Math.random() > 0.5;
-    var saturation         = Math.max(Math.min(Math.random() * this.options.saturation, 1), 0);
+    var isVerticalGradient = this.rng() > 0.5;
+    var saturation         = Math.max(Math.min(this.rng() * this.options.saturation, 1), 0);
     var hue                = Math.random();
 
     var u, v, ulen, vlen;
@@ -323,13 +327,13 @@ Sprite.prototype.returnPixelData = function() {
 
     for (u = 0; u < ulen; u++) {
         // Create a non-uniform random number between 0 and 1 (lower numbers more likely)
-        var isNewColor = Math.abs(((Math.random() * 2 - 1) 
-                                 + (Math.random() * 2 - 1) 
-                                 + (Math.random() * 2 - 1)) / 3);
+        var isNewColor = Math.abs(((this.rng() * 2 - 1) 
+                                 + (this.rng() * 2 - 1) 
+                                 + (this.rng() * 2 - 1)) / 3);
 
         // Only change the color sometimes (values above 0.8 are less likely than others)
         if (isNewColor > (1 - this.options.colorVariations)) {
-            hue = Math.random();
+            hue = this.rng();
         }
 
         for (v = 0; v < vlen; v++) {
@@ -348,7 +352,7 @@ Sprite.prototype.returnPixelData = function() {
                 if (this.options.colored) {
                     // Fade brightness away towards the edges
                     var brightness = Math.sin((u / ulen) * Math.PI) * (1 - this.options.brightnessNoise) 
-                                   + Math.random() * this.options.brightnessNoise;
+                                   + this.rng() * this.options.brightnessNoise;
 
                     // Get the RGB color value
                     this.hslToRgb(hue, saturation, brightness, /*out*/ rgb);

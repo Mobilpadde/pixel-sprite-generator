@@ -1,6 +1,6 @@
 {
   "name": "ww-psg",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "A procedural pixel sprite generator for web workers",
   "main": "ww-psg.js",
   "directories": {
@@ -24,5 +24,8 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Mobilpadde/ww-psg/issues"
+  },
+  "dependencies": {
+    "seed-random": "^2.2.0"
   }
 }
