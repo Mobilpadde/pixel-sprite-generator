@@ -78,6 +78,7 @@ function Sprite(mask, pixels, options) {
         brightnessNoise : 0.3,
         saturation      : 0.5,
         seed            : null,
+        rng             : null,
     };
 
     // Set default options
@@ -96,7 +97,7 @@ function Sprite(mask, pixels, options) {
         }
     }
 
-    this.rng = seed(options.seed);
+    this.rng = this.options.rng || seed(options.seed);
 
     this.init();
 }
