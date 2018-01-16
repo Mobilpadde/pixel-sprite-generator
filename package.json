@@ -1,6 +1,6 @@
 {
   "name": "ww-psg",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "A procedural pixel sprite generator for web workers",
   "main": "ww-psg.js",
   "directories": {
@@ -20,7 +20,7 @@
     "web",
     "worker"
   ],
-  "author": "Zelimir Fedoran <zelimir.fedoran@gmail.com>",
+  "author": "Mads Cordes <mobilpadde@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Mobilpadde/ww-psg/issues"
