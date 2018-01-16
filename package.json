@@ -1,8 +1,8 @@
 {
-  "name": "pixel-sprite-generator",
+  "name": "ww-psg",
   "version": "0.0.2",
-  "description": "A procedural pixel sprite generator",
-  "main": "pixel-sprite-generator.js",
+  "description": "A procedural pixel sprite generator for web workers",
+  "main": "ww-psg.js",
   "directories": {
     "doc": "doc",
     "example": "example"
@@ -12,16 +12,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/zfedoran/pixel-sprite-generator.git"
+    "url": "https://github.com/Mobilpadde/ww-psg.git"
   },
   "keywords": [
     "sprite",
     "gamedev",
-    "procedural"
+    "procedural",
+    "web",
+    "worker"
   ],
   "author": "Zelimir Fedoran <zelimir.fedoran@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/zfedoran/pixel-sprite-generator/issues"
+    "url": "https://github.com/Mobilpadde/ww-psg/issues"
   }
 }
