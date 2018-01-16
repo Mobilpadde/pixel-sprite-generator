@@ -1,17 +1,63 @@
 ww-psg
 ===
+Procedural Sprite Generation for Web Workers.
+
 ## Installation
 
-#### Using NPM
+### Using A Package Manager
 If you have [npm](https://www.npmjs.org/) installed, you can add the ww-psg to your project using the following command.
 
-```
+```sh
 $ npm i ww-psg
 ```
 or, if you prefer [yarn](https://yarnpkg.com).
-```
+```sh
 $ yarn add ww-psg
 ```
+
+### Using the package
+It's a bit tricky, but you can manage, I believe in you!
+
+Firstly, we need to create a new canvas.
+
+```javascript
+const c = document.createElement('canvas');
+const ctx = c.getContext('2d');
+
+c.width = 8; // Sprite width
+c.height = 8; // Sprite height
+
+const pixels = ctx.createImageData(c.width * 2, c.height * 2);
+// ... pass `c` and `pixels` to worker.
+```
+
+Next - I figure you know how to import packages - create a sprite.
+
+```javascript
+const mask = new ww_psg.Mask([
+    0, 0, 0, 1,
+    0, 0, 0, 1,
+    0, 0, 0, 1,
+    0, 0, 0, 1,
+], c.width, c.height, true, true);
+```
+
+Now for the fun part!
+
+```javascript
+const sprite = new ww_psg.Sprite(mask, pixels); // And some options, if desired.
+// ... pass `sprite` back from worker.
+
+const imageData = new ImageDate(
+    new Uint8ClampedArray(Object.values(sprite.pixels.data)),
+    c.width,
+    c.height,
+);
+
+ctx.putImageData(imageData, 0, 0);
+```
+
+BAM! You now have a beautiful sprite. Thanks!
 
 ## Ports/Other Languages
  - Dart [pixel-sprite-generator](https://github.com/tobbel/pixel-sprite-generator) port by [tobbel](https://github.com/tobbel)
