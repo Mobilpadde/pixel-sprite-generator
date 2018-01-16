@@ -65,6 +65,7 @@ function Sprite(mask, pixels, options) {
     this.width     = mask.width * (mask.mirrorX ? 2 : 1);
     this.height    = mask.height * (mask.mirrorY ? 2 : 1);
     this.mask      = mask;
+    this.pixels    = pixels;
     this.data      = new Array(this.width * this.height);
 
     this.options = options || {};
@@ -104,7 +105,6 @@ function Sprite(mask, pixels, options) {
 *   @returns {array}
 */
 Sprite.prototype.init = function() {
-    this.initContext();
     this.initData();
 
     this.applyMask();
@@ -121,17 +121,6 @@ Sprite.prototype.init = function() {
     this.generateEdges();
 
     return this.returnPixelData();
-};
-
-/**
-*   The initContext method requests a CanvasRenderingContext2D from the
-*   internal canvas object.
-*
-*   @method 
-*   @returns {undefined}
-*/
-Sprite.prototype.setPixels = fuinction(pixels) {
-  this.pixels = pixels;
 };
 
 /**
