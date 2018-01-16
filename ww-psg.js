@@ -366,6 +366,7 @@ Sprite.prototype.returnPixelData = function() {
                         rgb.r = 0;
                         rgb.g = 0;
                         rgb.b = 0;
+                        rgb.a = 0;
                     }
                 }
             }
@@ -373,7 +374,7 @@ Sprite.prototype.returnPixelData = function() {
             this.pixels.data[index + 0] = rgb.r * 255;
             this.pixels.data[index + 1] = rgb.g * 255;
             this.pixels.data[index + 2] = rgb.b * 255;
-            this.pixels.data[index + 3] = 255;
+            this.pixels.data[index + 3] = rgb.a * 255;
         }
     }
     
