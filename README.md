@@ -1,15 +1,16 @@
-/!\ WIP; use with caution /!\
+ww-psg
 ===
-
-pixel-sprite-generator
-======================
 ## Installation
 
 #### Using NPM
-If you have [npm](https://www.npmjs.org/) installed, you can add the pixel-sprite-generator to your project using the following command.
+If you have [npm](https://www.npmjs.org/) installed, you can add the ww-psg to your project using the following command.
 
 ```
-npm install pixel-sprite-generator
+$ npm i ww-psg
+```
+or, if you prefer [yarn](https://yarnpkg.com).
+```
+$ yarn add ww-psg
 ```
 
 ## Ports/Other Languages

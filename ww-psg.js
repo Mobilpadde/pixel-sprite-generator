@@ -366,7 +366,7 @@ Sprite.prototype.returnPixelData = function() {
                         rgb.r = 0;
                         rgb.g = 0;
                         rgb.b = 0;
-                        rgb.a = 0;
+                        rgb.a = 1;
                     }
                 }
             }
