@@ -350,6 +350,8 @@ Sprite.prototype.returnPixelData = function() {
             var rgb = { r: 1, g: 1, b: 1, a: 0 };
 
             if (val !== 0) {
+                rgb.a = 1;
+
                 if (this.options.colored) {
                     // Fade brightness away towards the edges
                     var brightness = Math.sin((u / ulen) * Math.PI) * (1 - this.options.brightnessNoise) 
@@ -363,8 +365,8 @@ Sprite.prototype.returnPixelData = function() {
                         rgb.r *= this.options.edgeBrightness;
                         rgb.g *= this.options.edgeBrightness;
                         rgb.b *= this.options.edgeBrightness;
+                        rgb.a *= this.options.edgeBrightness;
                     }
-                    rgb.a = 1;
 
                 }  else {
                     // Not colored, simply output black
@@ -372,7 +374,6 @@ Sprite.prototype.returnPixelData = function() {
                         rgb.r = 0;
                         rgb.g = 0;
                         rgb.b = 0;
-                        rgb.a = 1;
                     }
                 }
             }
@@ -400,7 +401,7 @@ Sprite.prototype.returnPixelData = function() {
 */
 Sprite.prototype.hslToRgb = function(h, s, l, result) {
     if (typeof result === 'undefined') {
-        result = { r: 0, g: 0, b: 0 };
+        result = { r: 0, g: 0, b: 0, a: 1 };
     }
 
     var i, f, p, q, t;
