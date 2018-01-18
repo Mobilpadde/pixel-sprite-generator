@@ -350,15 +350,13 @@ Sprite.prototype.returnPixelData = function() {
             var rgb = { r: 1, g: 1, b: 1, a: 0 };
 
             if (val !== 0) {
-                rgb.a = 1;
-
                 if (this.options.colored) {
                     // Fade brightness away towards the edges
                     var brightness = Math.sin((u / ulen) * Math.PI) * (1 - this.options.brightnessNoise) 
                                    + this.rng() * this.options.brightnessNoise;
 
                     // Get the RGB color value
-                    rbg = this.hslToRgb(hue, saturation, brightness, /*out*/ rgb);
+                    rgb = this.hslToRgb(hue, saturation, brightness);
 
                     // If this is an edge, then darken the pixel
                     if (val === -1) {
@@ -373,8 +371,11 @@ Sprite.prototype.returnPixelData = function() {
                         rgb.r = 0;
                         rgb.g = 0;
                         rgb.b = 0;
+                        rgb.a = 1;
                     }
                 }
+            } else {
+                rgb.a = 0;
             }
 
             this.pixels.data[index + 0] = rgb.r * 255;
@@ -398,10 +399,8 @@ Sprite.prototype.returnPixelData = function() {
 *   @param {result}
 *   @returns {result}
 */
-Sprite.prototype.hslToRgb = function(h, s, l, result) {
-    if (typeof result === 'undefined') {
-        result = { r: 0, g: 0, b: 0, a: 1 };
-    }
+Sprite.prototype.hslToRgb = function(h, s, l) {
+    const result = { r: 0, g: 0, b: 0, a: 1 };
 
     var i, f, p, q, t;
     i = Math.floor(h * 6);
