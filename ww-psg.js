@@ -358,14 +358,13 @@ Sprite.prototype.returnPixelData = function() {
                                    + this.rng() * this.options.brightnessNoise;
 
                     // Get the RGB color value
-                    this.hslToRgb(hue, saturation, brightness, /*out*/ rgb);
+                    rbg = this.hslToRgb(hue, saturation, brightness, /*out*/ rgb);
 
                     // If this is an edge, then darken the pixel
                     if (val === -1) {
                         rgb.r *= this.options.edgeBrightness;
                         rgb.g *= this.options.edgeBrightness;
                         rgb.b *= this.options.edgeBrightness;
-                        rgb.a *= this.options.edgeBrightness;
                     }
 
                 }  else {
