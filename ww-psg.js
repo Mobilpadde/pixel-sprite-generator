@@ -1,5 +1,5 @@
 const seed = require('seed-random');
-const v = require('./package.json');
+const v = require('./package.json').version;
 
 /**
  * Pixel Sprite Generator v0.0.2
